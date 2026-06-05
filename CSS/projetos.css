@@ -1,0 +1,894 @@
+/* ==========================================================================
+   PROJETOS.CSS — Grimório de Projetos | Visual RPG Noturno v4
+   ========================================================================== */
+
+/* ===== FUNDO ESTELAR ===== */
+.stars-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.stars-layer {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(1px 1px at 10% 15%, rgba(167,139,250,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 25% 60%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 50% 30%, rgba(167,139,250,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 20%, rgba(167,139,250,0.4) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 40% 90%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 55%, rgba(167,139,250,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 15% 85%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 60% 10%, rgba(167,139,250,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 35% 45%, rgba(255,255,255,0.2) 0%, transparent 100%);
+    animation: twinkle 8s ease-in-out infinite alternate;
+}
+
+.stars-layer.s2 {
+    background-image:
+        radial-gradient(1px 1px at 20% 35%, rgba(255,255,255,0.2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 45% 70%, rgba(167,139,250,0.3) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 75% 15%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 5% 50%, rgba(167,139,250,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 95% 75%, rgba(255,255,255,0.2) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 30% 20%, rgba(167,139,250,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 65% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 95%, rgba(167,139,250,0.3) 0%, transparent 100%);
+    animation: twinkle 12s ease-in-out infinite alternate-reverse;
+}
+
+.stars-layer.s3 {
+    background: radial-gradient(ellipse at 50% 0%, rgba(46,16,101,0.3) 0%, transparent 60%),
+                radial-gradient(ellipse at 0% 100%, rgba(10,22,50,0.5) 0%, transparent 50%);
+    animation: none;
+}
+
+@keyframes twinkle {
+    0%   { opacity: 0.6; }
+    50%  { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+/* ===== CONTAINER ===== */
+.projetos-container {
+    padding: 40px 0 60px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== MOLDURA GRIMÓRIO (Hero) ===== */
+.grimoire-frame {
+    position: relative;
+    background: linear-gradient(135deg, rgba(7,13,26,0.95) 0%, rgba(14,20,46,0.9) 50%, rgba(7,13,26,0.95) 100%);
+    border: 1px solid rgba(124,58,237,0.4);
+    border-radius: var(--radius-xl);
+    padding: 44px 48px;
+    overflow: hidden;
+}
+
+/* Brilho de fundo */
+.grimoire-frame::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(ellipse, rgba(46,16,101,0.25) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Bordas decorativas horizontais */
+.gf-border-top, .gf-border-bottom {
+    position: absolute;
+    left: 50px;
+    right: 50px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(124,58,237,0.5), rgba(167,139,250,0.8), rgba(124,58,237,0.5), transparent);
+}
+.gf-border-top  { top: 12px; }
+.gf-border-bottom { bottom: 12px; }
+
+/* Cantos ornamentais */
+.gf-corner {
+    position: absolute;
+    font-size: 1.1rem;
+    color: rgba(124,58,237,0.7);
+    line-height: 1;
+}
+.gf-tl { top: 10px; left: 14px; }
+.gf-tr { top: 10px; right: 14px; }
+.gf-bl { bottom: 10px; left: 14px; }
+.gf-br { bottom: 10px; right: 14px; }
+
+.grimoire-hero-inner {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    position: relative;
+    z-index: 1;
+}
+
+.grimoire-emblem {
+    font-size: 4rem;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 20px rgba(124,58,237,0.5));
+    animation: float-emblem 4s ease-in-out infinite;
+}
+
+@keyframes float-emblem {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+}
+
+.projetos-hero h1 {
+    font-family: var(--font-medieval);
+    font-size: 2.6rem;
+    margin-bottom: 12px;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #e8f0ff, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.projetos-hero .hero-description {
+    color: var(--text-muted);
+    font-size: 0.96rem;
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 24px;
+}
+
+.projetos-hero .hero-description strong {
+    color: var(--purple-glow);
+}
+
+/* Stats do Grimório */
+.grimoire-stats {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.gs-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.gs-num {
+    font-family: var(--font-medieval);
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--purple-glow);
+    line-height: 1;
+}
+
+.gs-label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.gs-divider {
+    font-size: 0.9rem;
+    color: rgba(124,58,237,0.4);
+}
+
+/* ===== BUSCA TEMÁTICA ===== */
+.grimoire-search {
+    background: rgba(7,13,26,0.9);
+    border: 1px solid rgba(124,58,237,0.25);
+    border-radius: var(--radius-md);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.search-icon-wrap {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+#repo-search {
+    background: transparent;
+    border: none;
+    color: var(--text-white);
+    font-family: var(--font-modern);
+    font-size: 0.9rem;
+    flex: 1;
+    outline: none;
+}
+
+#repo-search::placeholder { color: var(--text-muted); }
+
+.filter-stats {
+    font-size: 0.82rem;
+    color: var(--purple-light);
+    font-weight: 700;
+    white-space: nowrap;
+    border-left: 1px solid var(--border-color);
+    padding-left: 14px;
+}
+
+/* ===== FILTRO POR LINGUAGEM ===== */
+.lang-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.lf-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.lf-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-family: var(--font-modern);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.lf-btn:hover, .lf-btn.active {
+    background: rgba(124,58,237,0.15);
+    border-color: var(--purple-light);
+    color: var(--purple-glow);
+}
+
+/* ===== GRID DE FICHAS RPG ===== */
+.projects-api-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    padding-bottom: 30px;
+}
+
+/* ===== FICHA DE PERSONAGEM / PROJETO ===== */
+.project-api-card {
+    position: relative;
+    background: linear-gradient(145deg, #070d1a 0%, #0a1228 60%, #070d1a 100%);
+    border: 1px solid rgba(124,58,237,0.25);
+    border-radius: 2px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 260px;
+    transition: all 0.35s ease;
+    overflow: hidden;
+    /* Efeito de pergaminho / ficha */
+    clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+}
+
+.project-api-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(124,58,237,0.04) 0%, transparent 50%);
+    pointer-events: none;
+    transition: opacity 0.35s;
+}
+
+.project-api-card::after {
+    /* Canto dobrado */
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 18px; height: 18px;
+    background: linear-gradient(225deg, rgba(124,58,237,0.5) 0%, rgba(14,30,70,0.8) 100%);
+    clip-path: polygon(0 0, 100% 100%, 100% 0);
+}
+
+.project-api-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(124,58,237,0.6);
+    box-shadow:
+        0 0 0 1px rgba(124,58,237,0.15),
+        0 12px 40px rgba(46,16,101,0.4),
+        inset 0 1px 0 rgba(167,139,250,0.06);
+}
+
+.project-api-card:hover::before {
+    opacity: 2;
+}
+
+/* Faixa de cabeçalho da ficha */
+.pac-header-bar {
+    background: linear-gradient(90deg, rgba(46,16,101,0.5) 0%, rgba(14,30,70,0.3) 100%);
+    border-bottom: 1px solid rgba(124,58,237,0.2);
+    padding: 14px 20px 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.pac-rank {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--purple-light);
+}
+
+.pac-updated {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Corpo da ficha */
+.pac-body {
+    padding: 18px 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pac-title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.pac-title-row h3 {
+    font-family: var(--font-medieval);
+    font-size: 1rem;
+    color: var(--text-white);
+    word-break: break-word;
+    line-height: 1.3;
+    flex: 1;
+}
+
+.pac-stars {
+    font-size: 0.72rem;
+    background: rgba(255,215,0,0.08);
+    color: var(--gold);
+    padding: 3px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+    border: 1px solid rgba(255,215,0,0.12);
+    flex-shrink: 0;
+}
+
+.pac-desc {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+/* Tags de tópicos */
+.pac-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 4px;
+}
+
+.pac-topic {
+    font-size: 0.67rem;
+    font-weight: 700;
+    background: rgba(14,30,70,0.7);
+    border: 1px solid rgba(124,58,237,0.2);
+    color: var(--purple-glow);
+    padding: 2px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+    text-transform: lowercase;
+}
+
+/* Rodapé da ficha */
+.pac-footer {
+    padding: 12px 20px 16px 20px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.pac-lang-badge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.pac-lang-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.pac-lang-name {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.pac-links {
+    display: flex;
+    gap: 8px;
+}
+
+.pac-link {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 4px;
+    transition: all var(--transition);
+    letter-spacing: 0.3px;
+}
+
+.pac-link.code {
+    background: var(--bg-darker);
+    color: var(--text-white);
+    border: 1px solid var(--border-color);
+}
+
+.pac-link.code:hover {
+    border-color: var(--purple-light);
+    color: var(--purple-glow);
+}
+
+.pac-link.live {
+    background: linear-gradient(135deg, rgba(124,58,237,0.3), rgba(46,16,101,0.5));
+    color: var(--purple-glow);
+    border: 1px solid rgba(124,58,237,0.35);
+}
+
+.pac-link.live:hover {
+    background: linear-gradient(135deg, rgba(124,58,237,0.5), rgba(124,58,237,0.3));
+    color: white;
+}
+
+/* Cores por linguagem */
+.lang-dot-js       { background: #f7df1e; }
+.lang-dot-html     { background: #e34c26; }
+.lang-dot-css      { background: #264de4; }
+.lang-dot-ts       { background: #3178c6; }
+.lang-dot-python   { background: #3572A5; }
+.lang-dot-java     { background: #b07219; }
+.lang-dot-default  { background: #6b80a8; }
+
+/* ===== LOADING ===== */
+.loading-spell {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.loading-rune {
+    font-size: 2rem;
+    color: var(--purple-light);
+    animation: spin-rune 2s linear infinite;
+    display: inline-block;
+}
+
+.loading-spell.error { color: var(--red-danger); }
+
+@keyframes spin-rune {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 900px) {
+    .grimoire-hero-inner { flex-direction: column; text-align: center; gap: 20px; }
+    .grimoire-emblem { font-size: 3rem; }
+    .grimoire-stats { justify-content: center; }
+    .projetos-hero h1 { font-size: 2rem; }
+    .grimoire-frame { padding: 30px 24px; }
+}
+
+@media (max-width: 768px) {
+    .grimoire-search { flex-wrap: wrap; }
+    #repo-search { width: 100%; }
+    .filter-stats { border-left: none; padding-left: 0; }
+    .projects-api-grid { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   PROJETOS DESTAQUE — Cards grandes estilo screenshot
+   ========================================================================== */
+
+.proj-section-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 10px 0 20px;
+}
+
+.psl-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(124,58,237,0.4), transparent);
+}
+
+.psl-text {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: rgba(124,58,237,0.7);
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* ===== LISTA DE CARDS FEATURED ===== */
+.featured-proj-row {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* ===== CARD FEATURED INDIVIDUAL ===== */
+.proj-featured-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: linear-gradient(145deg, #070d1a 0%, #0a1228 100%);
+    border: 1px solid rgba(124,58,237,0.2);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: border-color 0.35s, box-shadow 0.35s;
+}
+
+.proj-featured-card:hover {
+    border-color: rgba(124,58,237,0.45);
+    box-shadow: 0 8px 40px rgba(46,16,101,0.3);
+}
+
+/* Alterna lado da tela */
+.proj-featured-card:nth-child(even) {
+    direction: rtl;
+}
+.proj-featured-card:nth-child(even) > * {
+    direction: ltr;
+}
+
+/* ===== MOCKUP DE TELA (metade esquerda) ===== */
+.pfc-screen {
+    display: flex;
+    flex-direction: column;
+    background: #010409;
+    border-right: 1px solid rgba(124,58,237,0.1);
+    min-height: 280px;
+}
+
+.proj-featured-card:nth-child(even) .pfc-screen {
+    border-right: none;
+    border-left: 1px solid rgba(124,58,237,0.1);
+}
+
+.pfc-bar {
+    background: #0d1525;
+    padding: 8px 14px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    flex-shrink: 0;
+}
+
+.pfc-bar span:not(.pfc-url) {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+.pfc-bar span:nth-child(1) { background: rgba(255,95,87,0.6); }
+.pfc-bar span:nth-child(2) { background: rgba(255,189,46,0.6); }
+.pfc-bar span:nth-child(3) { background: rgba(39,201,63,0.6); }
+
+.pfc-url {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    margin-left: 8px;
+    font-family: monospace;
+    background: rgba(255,255,255,0.04);
+    padding: 2px 8px;
+    border-radius: 3px;
+}
+
+.pfc-body {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Mockup RPG Portfolio */
+.rpg-preview-proj {
+    background: linear-gradient(145deg, #010409, #0a1628);
+}
+
+/* Mockup Majora */
+.majora-preview-proj {
+    background: linear-gradient(145deg, #0a0608, #1a0a2e);
+}
+
+.mp-stats-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+.mp-stats-row span {
+    font-size: 0.6rem;
+    color: #c8a227;
+    background: rgba(200,162,39,0.1);
+    border: 1px solid rgba(200,162,39,0.2);
+    padding: 2px 8px;
+    border-radius: 20px;
+}
+
+/* Mockup Abril */
+.abril-preview-proj {
+    background: linear-gradient(145deg, #0a0a0a, #1a0a2e);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 12px;
+}
+
+.ap-title-p { font-size: 0.7rem; color: #b388ff; font-weight: 700; }
+
+.ap-counter-p {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+}
+
+.ap-num-p {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #b388ff;
+    line-height: 1;
+    text-shadow: 0 0 30px rgba(179,136,255,0.6);
+}
+
+.ap-unit-p {
+    font-size: 0.7rem;
+    color: rgba(179,136,255,0.6);
+}
+
+.ap-poem-p {
+    font-size: 0.62rem;
+    color: rgba(241,241,241,0.45);
+    font-style: italic;
+    max-width: 170px;
+    line-height: 1.5;
+}
+
+/* ===== PAINEL DE INFO (metade direita) ===== */
+.pfc-info {
+    padding: 28px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.pfc-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pfc-rank {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--purple-glow);
+    background: rgba(124,58,237,0.1);
+    border: 1px solid rgba(124,58,237,0.2);
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.pfc-rank.react-rank {
+    color: #61dafb;
+    background: rgba(97,218,251,0.08);
+    border-color: rgba(97,218,251,0.2);
+}
+
+.pfc-rank.purple-rank {
+    color: #b388ff;
+    background: rgba(179,136,255,0.08);
+    border-color: rgba(179,136,255,0.2);
+}
+
+.pfc-updated {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+}
+
+.pfc-title {
+    font-family: var(--font-medieval);
+    font-size: 1.3rem;
+    color: var(--text-white);
+    line-height: 1.2;
+}
+
+.pfc-desc {
+    color: var(--text-muted);
+    font-size: 0.83rem;
+    line-height: 1.65;
+    flex-grow: 1;
+}
+
+/* Tags de tecnologia */
+.pfc-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.pfc-tech span {
+    font-size: 0.67rem;
+    font-weight: 700;
+    background: rgba(7,13,26,0.8);
+    border: 1px solid rgba(124,58,237,0.18);
+    color: rgba(167,139,250,0.85);
+    padding: 3px 9px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+}
+
+/* Botões de ação */
+.pfc-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.pfc-btn {
+    text-decoration: none;
+    padding: 9px 20px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+}
+
+.pfc-btn.code {
+    background: var(--bg-darker);
+    color: var(--text-white);
+    border: 1px solid var(--border-color);
+}
+
+.pfc-btn.code:hover {
+    border-color: var(--purple-light);
+    color: var(--purple-glow);
+}
+
+.pfc-btn.live {
+    background: linear-gradient(135deg, rgba(124,58,237,0.3), rgba(46,16,101,0.5));
+    color: var(--purple-glow);
+    border: 1px solid rgba(124,58,237,0.35);
+}
+
+.pfc-btn.live:hover {
+    background: linear-gradient(135deg, rgba(124,58,237,0.55), rgba(124,58,237,0.35));
+    color: #fff;
+}
+
+.pfc-btn.purple-live {
+    background: linear-gradient(135deg, rgba(179,136,255,0.15), rgba(90,24,154,0.4));
+    color: #b388ff;
+    border-color: rgba(179,136,255,0.3);
+}
+
+.pfc-btn.purple-live:hover {
+    background: rgba(179,136,255,0.25);
+    color: #fff;
+}
+
+/* Boss btn na página de projetos */
+.boss-btn-proj {
+    background: linear-gradient(135deg, #2e1065, #4c1d95) !important;
+    border: 1px solid rgba(124,58,237,0.5) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Responsivo */
+@media (max-width: 860px) {
+    .proj-featured-card {
+        grid-template-columns: 1fr;
+        direction: ltr !important;
+    }
+    .proj-featured-card:nth-child(even) {
+        direction: ltr;
+    }
+    .proj-featured-card:nth-child(even) .pfc-screen {
+        border-left: none;
+        border-bottom: 1px solid rgba(124,58,237,0.1);
+    }
+    .pfc-screen {
+        min-height: 200px;
+        border-right: none;
+        border-bottom: 1px solid rgba(124,58,237,0.1);
+    }
+    .pfc-info { padding: 22px 22px; }
+}
+
+/* Boss fight overlay — também usado na página projetos */
+.boss-overlay { position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0); display: flex; align-items: center; justify-content: center; pointer-events: none; transition: background 0.4s; }
+.boss-overlay.active { background: rgba(0,0,0,0.92); pointer-events: all; }
+.boss-arena { position: relative; width: 100%; max-width: 560px; margin: 20px; background: linear-gradient(160deg,#02050e 0%,#0a0418 50%,#020408 100%); border: 1px solid rgba(124,58,237,0.5); border-radius: 4px; overflow: hidden; transform: scale(0.85) translateY(30px); opacity: 0; transition: transform 0.45s cubic-bezier(0.175,0.885,0.32,1.275),opacity 0.35s ease; box-shadow: 0 0 0 1px rgba(124,58,237,0.1),0 0 60px rgba(46,16,101,0.5); }
+.boss-overlay.active .boss-arena { transform: scale(1) translateY(0); opacity: 1; }
+.boss-bg-stars { position: absolute; inset: 0; background: radial-gradient(1px 1px at 15% 20%,rgba(167,139,250,0.8) 0%,transparent 100%),radial-gradient(1px 1px at 70% 10%,rgba(255,255,255,0.5) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 45% 60%,rgba(124,58,237,0.6) 0%,transparent 100%),radial-gradient(1px 1px at 85% 45%,rgba(255,255,255,0.4) 0%,transparent 100%); pointer-events: none; animation: boss-twinkle 3s ease-in-out infinite alternate; }
+@keyframes boss-twinkle { from{opacity:0.5} to{opacity:1} }
+.boss-lightning { position: absolute; width: 2px; background: linear-gradient(180deg,transparent,rgba(124,58,237,0.8),transparent); pointer-events: none; opacity: 0; }
+.boss-overlay.active .boss-lightning { animation: lightning-strike 4s infinite; }
+.boss-lightning.l1{left:20%;height:100%;animation-delay:0s} .boss-lightning.l2{left:55%;height:80%;animation-delay:1.5s} .boss-lightning.l3{right:15%;height:90%;animation-delay:0.8s}
+@keyframes lightning-strike { 0%,89%,91%,100%{opacity:0} 90%{opacity:0.4} }
+.boss-content { padding: 32px 36px 28px; position: relative; z-index: 2; }
+.boss-header { text-align: center; margin-bottom: 28px; }
+.boss-tag { font-size: 0.65rem; font-weight: 700; letter-spacing: 4px; color: rgba(124,58,237,0.8); text-transform: uppercase; display: block; margin-bottom: 10px; animation: boss-tag-pulse 2s ease-in-out infinite; }
+@keyframes boss-tag-pulse { 0%,100%{color:rgba(124,58,237,0.7)} 50%{color:rgba(167,139,250,1)} }
+.boss-name { font-family: var(--font-medieval); font-size: 1.6rem; font-weight: 900; color: var(--text-white); letter-spacing: 3px; text-shadow: 0 0 30px rgba(124,58,237,0.5); margin-bottom: 6px; }
+.boss-sub { font-size: 0.78rem; color: var(--text-muted); font-style: italic; }
+.boss-hp-bars { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+.boss-combatant { flex: 1; display: flex; flex-direction: column; gap: 5px; }
+.bc-name { font-family: var(--font-medieval); font-size: 0.72rem; color: var(--text-white); letter-spacing: 1px; }
+.bc-bar { height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+.bc-fill { height: 100%; border-radius: 4px; }
+.player-fill { width: 90%; background: linear-gradient(90deg,#7c3aed,#a78bfa); animation: hp-pulse-player 2s ease-in-out infinite; }
+@keyframes hp-pulse-player { 0%,100%{box-shadow:0 0 8px rgba(124,58,237,0.4)} 50%{box-shadow:0 0 16px rgba(167,139,250,0.8)} }
+.enemy-fill { width: 100%; background: linear-gradient(90deg,#e74c3c,#ff6b6b); animation: hp-drain 3s ease-in-out infinite; }
+@keyframes hp-drain { 0%{width:100%} 50%{width:60%} 100%{width:100%} }
+.bc-hp { font-size: 0.6rem; color: var(--text-muted); font-weight: 700; }
+.boss-vs { font-family: var(--font-medieval); font-size: 1rem; font-weight: 900; color: var(--gold); text-shadow: 0 0 10px rgba(255,215,0,0.4); flex-shrink: 0; }
+.boss-dialogue { background: rgba(7,13,26,0.8); border: 1px solid rgba(124,58,237,0.2); border-radius: 4px; padding: 12px 16px; display: flex; align-items: flex-start; gap: 10px; margin-bottom: 24px; min-height: 50px; }
+.bd-arrow { color: var(--purple-light); font-size: 0.7rem; animation: blink-arrow 1s step-end infinite; flex-shrink: 0; margin-top: 2px; }
+@keyframes blink-arrow { 0%,100%{opacity:1} 50%{opacity:0} }
+.bd-text { font-size: 0.82rem; color: var(--text-white); line-height: 1.5; font-style: italic; }
+.boss-actions { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+.boss-action-btn { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 4px; padding: 12px 10px; display: flex; flex-direction: column; align-items: center; gap: 5px; text-decoration: none; transition: all 0.3s; text-align: center; }
+.boss-action-btn:hover { border-color: rgba(124,58,237,0.5); background: rgba(124,58,237,0.08); transform: translateY(-2px); }
+.boss-action-btn.primary { border-color: rgba(37,211,102,0.35); background: rgba(37,211,102,0.05); }
+.boss-action-btn.primary:hover { border-color: rgba(37,211,102,0.6); background: rgba(37,211,102,0.12); }
+.ba-icon { font-size: 1.3rem; }
+.ba-text strong { display: block; font-size: 0.72rem; font-family: var(--font-medieval); color: var(--text-white); }
+.ba-text small { font-size: 0.6rem; color: var(--text-muted); }
+.boss-close { width: 100%; background: transparent; border: 1px solid rgba(255,255,255,0.06); color: var(--text-muted); font-family: var(--font-modern); font-size: 0.72rem; padding: 8px; border-radius: 4px; cursor: pointer; letter-spacing: 1px; transition: all 0.3s; }
+.boss-close:hover { border-color: rgba(231,76,60,0.4); color: rgba(231,76,60,0.8); }
+@media (max-width:560px) { .boss-content{padding:24px 20px 20px} .boss-name{font-size:1.2rem} .boss-actions{grid-template-columns:1fr} }

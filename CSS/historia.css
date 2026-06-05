@@ -1,0 +1,286 @@
+/* ==========================================================================
+   HISTORIA.CSS — Estilos exclusivos da página historia.html
+   ========================================================================== */
+
+.historia-container {
+    padding: 50px 0 80px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* --- INTRO ÉPICA --- */
+.historia-intro {
+    text-align: center;
+    padding: 60px 20px;
+    position: relative;
+}
+
+.historia-intro::before {
+    content: '⚔';
+    position: absolute;
+    font-size: 8rem;
+    opacity: 0.03;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.historia-intro .rank-tag { margin-bottom: 20px; }
+
+.historia-intro h1 {
+    font-family: var(--font-medieval);
+    font-size: 3.2rem;
+    font-weight: 900;
+    margin-bottom: 18px;
+    line-height: 1.1;
+}
+
+.historia-intro p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 580px;
+    margin: 0 auto;
+}
+
+/* --- SEPARADOR RÚNICO --- */
+.rune-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--purple-primary);
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    opacity: 0.5;
+    margin: 0 auto;
+    max-width: 400px;
+}
+
+.rune-divider::before,
+.rune-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--purple-primary));
+}
+
+.rune-divider::after {
+    background: linear-gradient(90deg, var(--purple-primary), transparent);
+}
+
+/* --- TIMELINE ÉPICA --- */
+.timeline-section { position: relative; }
+
+.timeline-section > h2 {
+    font-family: var(--font-medieval);
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+    padding-left: 24px;
+    border-left: 3px solid var(--purple-primary);
+}
+
+.epic-timeline {
+    position: relative;
+    padding-left: 48px;
+}
+
+/* Linha central vertical */
+.epic-timeline::before {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--purple-primary), var(--purple-dark), transparent);
+}
+
+.timeline-chapter {
+    position: relative;
+    margin-bottom: 48px;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slide-in-chapter 0.6s ease forwards;
+}
+
+.timeline-chapter:nth-child(1) { animation-delay: 0.1s; }
+.timeline-chapter:nth-child(2) { animation-delay: 0.25s; }
+.timeline-chapter:nth-child(3) { animation-delay: 0.4s; }
+.timeline-chapter:nth-child(4) { animation-delay: 0.55s; }
+
+@keyframes slide-in-chapter {
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Ícone no eixo da timeline */
+.chapter-icon {
+    position: absolute;
+    left: -40px;
+    top: 8px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--purple-dark), var(--purple-primary));
+    border: 2px solid var(--bg-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    box-shadow: 0 0 12px rgba(124,58,237,0.5);
+    z-index: 1;
+}
+
+.chapter-content {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 28px 30px;
+    transition: border-color var(--transition), transform var(--transition);
+}
+
+.chapter-content:hover {
+    border-color: rgba(124,58,237,0.25);
+    transform: translateX(4px);
+}
+
+.chapter-date {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--purple-light);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.chapter-content h3 {
+    font-family: var(--font-medieval);
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+}
+
+.chapter-content p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    margin-bottom: 14px;
+}
+
+.chapter-content p:last-child { margin-bottom: 0; }
+
+.chapter-techs { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+
+.chapter-techs span {
+    background: rgba(124,58,237,0.08);
+    color: var(--purple-light);
+    border: 1px solid rgba(157,78,221,0.15);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* --- BLOCO DE MISSÃO FUTURA --- */
+.future-section { margin-top: 20px; }
+
+.future-section > h2 {
+    font-family: var(--font-medieval);
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    padding-left: 24px;
+    border-left: 3px solid rgba(124,58,237,0.25);
+    color: var(--text-muted);
+}
+
+.future-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.future-card {
+    background: var(--bg-card);
+    border: 1px dashed var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 26px;
+    text-align: center;
+    opacity: 0.6;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.future-card:hover {
+    opacity: 1;
+    border-color: rgba(124,58,237,0.25);
+}
+
+.future-card::before {
+    content: '🔒';
+    font-size: 1.6rem;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.future-card h4 {
+    font-family: var(--font-medieval);
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+}
+
+.future-card p {
+    font-size: 0.82rem;
+    color: #4a4a5a;
+    line-height: 1.5;
+}
+
+.future-lvl {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--purple-primary);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid rgba(124,58,237,0.15);
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+/* --- CITAÇÃO ÉPICA --- */
+.epic-quote {
+    background: linear-gradient(135deg, rgba(14,30,70,0.2), rgba(157,78,221,0.05));
+    border: 1px solid rgba(157,78,221,0.15);
+    border-left: 4px solid var(--purple-primary);
+    border-radius: var(--radius-md);
+    padding: 28px 32px;
+    text-align: center;
+}
+
+.epic-quote blockquote {
+    font-family: var(--font-medieval);
+    font-size: 1.15rem;
+    color: var(--text-white);
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.epic-quote cite {
+    font-size: 0.82rem;
+    color: var(--purple-light);
+    letter-spacing: 1px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .historia-intro h1 { font-size: 2rem; }
+    .epic-timeline { padding-left: 32px; }
+    .chapter-icon { left: -26px; width: 26px; height: 26px; font-size: 0.75rem; }
+    .future-grid { grid-template-columns: 1fr; }
+}
